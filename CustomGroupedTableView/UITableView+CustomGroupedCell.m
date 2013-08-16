@@ -22,23 +22,23 @@ static char const * const kAuxDataSourceKey;
 
 #pragma mark - Swizzle dataSource and auxDataSource
 
++ (void)swizzleSelector:(SEL)originalSelector withSelector:(SEL)otherSelector
+{
+    Method originalMethod = class_getInstanceMethod(self, originalSelector);
+	Method otherMethod = class_getInstanceMethod(self, otherSelector);
+    
+	class_addMethod(self, originalSelector, class_getMethodImplementation(self, originalSelector), method_getTypeEncoding(originalMethod));
+	class_addMethod(self, otherSelector, class_getMethodImplementation(self, otherSelector), method_getTypeEncoding(otherMethod));
+    
+	method_exchangeImplementations(class_getInstanceMethod(self, originalSelector), class_getInstanceMethod(self, otherSelector));
+}
+
 + (void)load
 {
-    Method originalMethod = class_getInstanceMethod(self, @selector(dataSource));
-    Method otherMethod = class_getInstanceMethod(self, @selector(swizzledDataSource));
-    method_exchangeImplementations(originalMethod, otherMethod);
-    
-    originalMethod = class_getInstanceMethod(self, @selector(setDataSource:));
-    otherMethod = class_getInstanceMethod(self, @selector(swizzledSetDataSource:));
-    method_exchangeImplementations(originalMethod, otherMethod);
-    
-    originalMethod = class_getInstanceMethod(self, @selector(forwardInvocation:));
-    otherMethod = class_getInstanceMethod(self, @selector(swizzledForwardInvocation:));
-    method_exchangeImplementations(originalMethod, otherMethod);
-
-    originalMethod = class_getInstanceMethod(self, @selector(methodSignatureForSelector:));
-    otherMethod = class_getInstanceMethod(self, @selector(swizzledMethodSignatureForSelector:));
-    method_exchangeImplementations(originalMethod, otherMethod);
+    [self swizzleSelector:@selector(dataSource) withSelector:@selector(swizzledDataSource)];
+    [self swizzleSelector:@selector(setDataSource:) withSelector:@selector(swizzledSetDataSource:)];
+    [self swizzleSelector:@selector(respondsToSelector:) withSelector:@selector(swizzledRespondsToSelector:)];
+    [self swizzleSelector:@selector(forwardInvocation:) withSelector:@selector(swizzledForwardInvocation:)];    
 }
 
 - (id <UITableViewDataSource>)swizzledDataSource
@@ -48,8 +48,8 @@ static char const * const kAuxDataSourceKey;
 
 - (void)swizzledSetDataSource:(id <UITableViewDataSource>)dataSource
 {
-    [self swizzledSetDataSource:self];
     self.auxDataSource = dataSource;
+    [self swizzledSetDataSource:self];
 }
 
 
@@ -57,7 +57,8 @@ static char const * const kAuxDataSourceKey;
 
 - (id <UITableViewDataSource>)auxDataSource
 {
-    return objc_getAssociatedObject(self, kAuxDataSourceKey);
+    id  <UITableViewDataSource> auxDataSource = objc_getAssociatedObject(self, kAuxDataSourceKey);
+    return auxDataSource;
 }
 
 - (void)setAuxDataSource:(id<UITableViewDataSource>)auxDataSource
@@ -100,15 +101,24 @@ static char const * const kAuxDataSourceKey;
 
 #pragma mark - Message Forwarding
 
-- (NSMethodSignature*)swizzledMethodSignatureForSelector:(SEL)selector
+- (BOOL)swizzledRespondsToSelector:(SEL)aSelector
 {
-    NSMethodSignature* signature = [self swizzledMethodSignatureForSelector:selector];
-//    if (!signature) {
-//        signature = [self.auxDataSource methodSignatureForSelector:selector];
-//    }
-    return signature;
+    if ( [self swizzledRespondsToSelector:aSelector] )
+        return YES;
+    else if ([self.auxDataSource respondsToSelector:aSelector]){
+        return YES;
+    }
+    return NO;
 }
 
+- (NSMethodSignature*)methodSignatureForSelector:(SEL)selector
+{
+    NSMethodSignature* signature = [super methodSignatureForSelector:selector];
+    if (!signature) {
+        signature = [(id)self.auxDataSource methodSignatureForSelector:selector];
+    }
+    return signature;
+}
 
 - (void)swizzledForwardInvocation:(NSInvocation *)anInvocation
 {
@@ -117,19 +127,5 @@ static char const * const kAuxDataSourceKey;
     else
         [self swizzledForwardInvocation:anInvocation];
 }
-
-
-
-//- (BOOL)swizzledRespondsToSelector:(SEL)aSelector
-//{
-//    return [self swizzledRespondsToSelector:aSelector];
-////    return [self swizzledRespondsToSelector:aSelector];
-////    if ( [self swizzledRespondsToSelector:aSelector] )
-////        return YES;
-////    else if ([self.auxDataSource respondsToSelector:aSelector]){
-////        return YES;
-////    }
-////    return NO;
-//}
 
 @end

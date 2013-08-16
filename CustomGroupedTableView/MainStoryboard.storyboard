@@ -27,7 +27,7 @@
         <scene sceneID="qLB-GA-ypK">
             <objects>
                 <tableViewController id="FVi-mk-1uC" customClass="DemoViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="LCR-7Q-Bd0" customClass="CustomGroupedTableView">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="LCR-7Q-Bd0">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -170,9 +170,6 @@
     <classes>
         <class className="CustomGroupedCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomGroupedCell.h"/>
-        </class>
-        <class className="CustomGroupedTableView" superclassName="UITableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomGroupedTableView.h"/>
         </class>
         <class className="DemoViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DemoViewController.h"/>
