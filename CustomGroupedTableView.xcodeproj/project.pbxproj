@@ -128,14 +128,14 @@
 		7C9891AB17BEB58B00614377 /* CustomGroupedTableView */ = {
 			isa = PBXGroup;
 			children = (
-				7C9891B417BED52A00614377 /* UITableView+CustomGroupedCell.h */,
-				7C9891B517BED52A00614377 /* UITableView+CustomGroupedCell.m */,
 				7C9891A017BEB53300614377 /* CustomGroupedCell.h */,
 				7C9891A117BEB53300614377 /* CustomGroupedCell.m */,
 				7C9891A317BEB54B00614377 /* CustomGroupedCellBackground.h */,
 				7C9891A417BEB54B00614377 /* CustomGroupedCellBackground.m */,
 				7C9891B117BED2D400614377 /* CustomGroupedTableView.h */,
 				7C9891B217BED2D400614377 /* CustomGroupedTableView.m */,
+				7C9891B417BED52A00614377 /* UITableView+CustomGroupedCell.h */,
+				7C9891B517BED52A00614377 /* UITableView+CustomGroupedCell.m */,
 			);
 			path = CustomGroupedTableView;
 			sourceTree = "<group>";
