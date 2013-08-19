@@ -10,6 +10,29 @@
 
 @implementation CustomGroupedCell
 
+- (void)initialize
+{
+    self.fillColor = [UIColor whiteColor];
+    self.strokeColor = [UIColor lightGrayColor];
+    self.lineWidth = 1.0;
+    self.cornerRadius = 3.0;
+    self.bevelHeight = 3.0;
+    self.showBorder = YES;
+}
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    [self initialize];
+    return self;
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    [self initialize];
+}
+
 - (void)setPosition:(CellPosition)position
 {
     _position = position;
@@ -19,9 +42,10 @@
         background = [CustomGroupedCellBackground new];
         background.fillColor = self.fillColor;
         background.strokeColor = self.strokeColor;
-        background.lineWidth = self.lineWidth.floatValue;
-        background.cornerRadius = self.cornerRadius.floatValue;
-        background.footerHeight = self.footerHeight.floatValue;
+        background.lineWidth = self.lineWidth;
+        background.cornerRadius = self.cornerRadius;
+        background.bevelHeight = self.bevelHeight;
+        background.showBorder = self.showBorder;
         self.backgroundView = background;
     }
     background.position = position;
@@ -32,56 +56,14 @@
         selectedBackground = [CustomGroupedCellBackground new];
         selectedBackground.fillColor = self.strokeColor;
         selectedBackground.strokeColor = self.strokeColor;
-        selectedBackground.lineWidth = self.lineWidth.floatValue;
-        selectedBackground.cornerRadius = self.cornerRadius.floatValue;
+        selectedBackground.lineWidth = self.lineWidth;
+        selectedBackground.cornerRadius = self.cornerRadius;
+        selectedBackground.showBorder = self.showBorder;
         self.selectedBackgroundView = selectedBackground;
     }
     selectedBackground.position = position;
     
     self.backgroundColor = [UIColor clearColor];
-}
-
-
-#pragma mark - Default Values
-
-- (UIColor *)fillColor
-{
-    if (!_fillColor) {
-        _fillColor = [UIColor whiteColor];
-    }
-    return _fillColor;
-}
-
-- (UIColor *)strokeColor
-{
-    if (!_strokeColor) {
-        _strokeColor = [UIColor lightGrayColor];
-    }
-    return _strokeColor;
-}
-
-- (NSNumber *)lineWidth
-{
-    if (!_lineWidth) {
-        _lineWidth = @1.0;
-    }
-    return _lineWidth;
-}
-
-- (NSNumber *)cornerRadius
-{
-    if (!_cornerRadius) {
-        _cornerRadius = @3.0;
-    }
-    return _cornerRadius;
-}
-
-- (NSNumber *)footerHeight
-{
-    if (!_footerHeight) {
-        _footerHeight = @3.0;
-    }
-    return _footerHeight;
 }
 
 @end

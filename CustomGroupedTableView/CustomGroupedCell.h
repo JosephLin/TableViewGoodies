@@ -15,8 +15,11 @@
 @property (nonatomic) CellPosition position;
 @property (nonatomic, strong) UIColor *fillColor;
 @property (nonatomic, strong) UIColor *strokeColor;
-@property (nonatomic, strong) NSNumber *lineWidth;
-@property (nonatomic, strong) NSNumber *cornerRadius;
-@property (nonatomic, strong) NSNumber *footerHeight;
+@property (nonatomic) CGFloat lineWidth;
+@property (nonatomic) CGFloat cornerRadius;
+@property (nonatomic) CGFloat bevelHeight;
+@property (nonatomic) BOOL showBorder;
+
+- (void)initialize;
 
 @end

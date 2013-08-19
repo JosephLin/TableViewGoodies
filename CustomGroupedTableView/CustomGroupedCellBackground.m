@@ -12,7 +12,7 @@
 
 @interface CustomGroupedCellBackground ()
 @property (nonatomic, strong) CAShapeLayer *backgroundLayer;
-@property (nonatomic, strong) CAShapeLayer *footerLayer;
+@property (nonatomic, strong) CAShapeLayer *bevelLayer;
 @end
 
 
@@ -22,11 +22,12 @@
 {
     self = [super init];
     self.backgroundLayer = [CAShapeLayer layer];
-    self.footerLayer = [CAShapeLayer layer];
+    self.bevelLayer = [CAShapeLayer layer];
     self.fillColor = [UIColor yellowColor];
     self.strokeColor = [UIColor redColor];
     self.lineWidth = 1.0;
     self.cornerRadius = 6.0;
+    self.showBorder = YES;
     return self;
 }
 
@@ -34,14 +35,15 @@
 {
     _fillColor = fillColor;
     self.backgroundLayer.fillColor = fillColor.CGColor;
+    self.backgroundLayer.strokeColor = (self.showBorder) ? self.strokeColor.CGColor : self.fillColor.CGColor;
 }
 
 - (void)setStrokeColor:(UIColor *)strokeColor
 {
     _strokeColor = strokeColor;
-    self.backgroundLayer.strokeColor = strokeColor.CGColor;
-    self.footerLayer.strokeColor = strokeColor.CGColor;
-    self.footerLayer.fillColor = strokeColor.CGColor;
+    self.backgroundLayer.strokeColor = (self.showBorder) ? self.strokeColor.CGColor : self.fillColor.CGColor;
+    self.bevelLayer.strokeColor = strokeColor.CGColor;
+    self.bevelLayer.fillColor = strokeColor.CGColor;
 }
 
 - (void)setLineWidth:(CGFloat)lineWidth
@@ -56,10 +58,16 @@
     [self setNeedsLayout];
 }
 
-- (void)setFooterHeight:(CGFloat)footerHeight
+- (void)setBevelHeight:(CGFloat)bevelHeight
 {
-    _footerHeight = footerHeight;
+    _bevelHeight = bevelHeight;
     [self setNeedsLayout];
+}
+
+- (void)setShowBorder:(BOOL)showBorder
+{
+    _showBorder = showBorder;
+    self.backgroundLayer.strokeColor = (self.showBorder) ? self.strokeColor.CGColor : self.fillColor.CGColor;
 }
 
 - (void)layoutSubviews
@@ -70,37 +78,56 @@
     CGSize radii = CGSizeMake(self.cornerRadius, self.cornerRadius);
     UIBezierPath *path = nil;
     
+    void (^showBevel)(BOOL, UIBezierPath*) = ^(BOOL showBevel, UIBezierPath *path){
+        if (self.bevelHeight > 0 && showBevel) {
+
+            self.bevelLayer.path = path.CGPath;
+            self.bevelLayer.frame = rect;
+
+            CGRect maskRect = CGRectOffset(rect, 0, CGRectGetHeight(rect) - self.bevelHeight);
+            maskRect = CGRectInset(maskRect, -10, 0); // makes mask bigger to avoid artifact at the edges.
+
+            CALayer *maskLayer = [CALayer layer];
+            maskLayer.frame = maskRect;
+            maskLayer.backgroundColor = [UIColor whiteColor].CGColor;
+            self.bevelLayer.mask = maskLayer;
+
+            [self.layer addSublayer:self.bevelLayer];
+        }
+        else {
+            [self.bevelLayer removeFromSuperlayer];
+        }
+    };
+    
+    
     switch (self.position) {
-        case CellPositionTop:
-            path = [UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:radii];
-            [self.footerLayer removeFromSuperlayer];
-            break;
-            
-        case CellPositionBottom: {
-            path = [UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:UIRectCornerBottomLeft|UIRectCornerBottomRight cornerRadii:radii];
-            
-            if (self.footerHeight > 0) {
-                CGRect footerRect = CGRectMake(0, CGRectGetHeight(rect) - self.footerHeight, CGRectGetWidth(rect), self.footerHeight);
-                self.footerLayer.path = [UIBezierPath bezierPathWithRoundedRect:footerRect byRoundingCorners:UIRectCornerBottomLeft|UIRectCornerBottomRight cornerRadii:radii].CGPath;
-                [self.layer addSublayer:self.footerLayer];
-            }
-            else {
-                [self.footerLayer removeFromSuperlayer];
-            }
+        case CellPositionTop: {
+            CGRect backgroundRect = CGRectMake(0, 1, CGRectGetWidth(rect), CGRectGetHeight(rect) - 1); // to avoid being cut-off
+            path = [UIBezierPath bezierPathWithRoundedRect:backgroundRect byRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:radii];
+            showBevel(NO, path);
             break;
         }
             
-        case CellPositionSingle:
-            path = [UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:UIRectCornerAllCorners cornerRadii:radii];
-            [self.footerLayer removeFromSuperlayer];
+        case CellPositionBottom: {
+            path = [UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:UIRectCornerBottomLeft|UIRectCornerBottomRight cornerRadii:radii];
+            showBevel(YES, path);
             break;
+        }
+            
+        case CellPositionSingle: {
+            CGRect backgroundRect = CGRectMake(0, 1, CGRectGetWidth(rect), CGRectGetHeight(rect) - 1); // to avoid being cut-off
+            path = [UIBezierPath bezierPathWithRoundedRect:backgroundRect byRoundingCorners:UIRectCornerAllCorners cornerRadii:radii];
+            showBevel(YES, path);
+            break;
+        }
             
         default:
             path = [UIBezierPath bezierPathWithRect:rect];
-            [self.footerLayer removeFromSuperlayer];
+            showBevel(NO, path);
             break;
     }
     
+    self.backgroundLayer.frame = rect;
     self.backgroundLayer.path = path.CGPath;
     
     if (![self.backgroundLayer superlayer]) {

@@ -23,6 +23,7 @@ typedef NS_ENUM(NSUInteger, CellPosition) {
 @property (nonatomic, strong) UIColor *strokeColor;
 @property (nonatomic) CGFloat lineWidth;
 @property (nonatomic) CGFloat cornerRadius;
-@property (nonatomic) CGFloat footerHeight;
+@property (nonatomic) CGFloat bevelHeight;
+@property (nonatomic) BOOL showBorder;
 
 @end
