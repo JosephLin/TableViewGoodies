@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'CustomGroupedTableView' target in the 'CustomGroupedTableView' project
+// Prefix header for all source files of the 'TableViewGoodies' target in the 'TableViewGoodies' project
 //
 
 #import <Availability.h>

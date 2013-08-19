@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  CustomGroupedTableView
+//  TableViewGoodies
 //
-//  Created by Joseph Lin on 8/16/13.
+//  Created by Joseph Lin on 8/19/13.
 //  Copyright (c) 2013 Joseph Lin. All rights reserved.
 //
 

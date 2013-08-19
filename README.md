@@ -1,4 +1,4 @@
-CustomGroupedTableView
+Table View Goodies
 ======================
 
 Use `CustomGroupedCellBackground` to give table view cell any kind of background you want.
