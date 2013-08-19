@@ -19,9 +19,17 @@
 		7C87005617C2CA41002187A5 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C87005417C2CA41002187A5 /* DemoViewController.m */; };
 		7C87005717C2CA41002187A5 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C87005517C2CA41002187A5 /* MainStoryboard.storyboard */; };
 		7C87005917C2CA57002187A5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C87005817C2CA57002187A5 /* QuartzCore.framework */; };
-		7C87006017C2CAD9002187A5 /* CustomGroupedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C87005B17C2CAD9002187A5 /* CustomGroupedCell.m */; };
-		7C87006117C2CAD9002187A5 /* CustomGroupedCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C87005D17C2CAD9002187A5 /* CustomGroupedCellBackground.m */; };
-		7C87006217C2CAD9002187A5 /* UITableView+CustomGroupedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C87005F17C2CAD9002187A5 /* UITableView+CustomGroupedCell.m */; };
+		7C87006A17C2CB4F002187A5 /* CustomGroupedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C87006517C2CB4F002187A5 /* CustomGroupedCell.m */; };
+		7C87006B17C2CB4F002187A5 /* CustomGroupedCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C87006717C2CB4F002187A5 /* CustomGroupedCellBackground.m */; };
+		7C87006C17C2CB4F002187A5 /* UITableView+CustomGroupedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C87006917C2CB4F002187A5 /* UITableView+CustomGroupedCell.m */; };
+		7C87007417C2CB82002187A5 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C87006F17C2CB82002187A5 /* ArrayDataSource.m */; };
+		7C87007517C2CB82002187A5 /* ArrayRowInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C87007117C2CB82002187A5 /* ArrayRowInfo.m */; };
+		7C87007617C2CB82002187A5 /* ArraySectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C87007317C2CB82002187A5 /* ArraySectionInfo.m */; };
+		7C87007917C2CC1E002187A5 /* FatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C87007817C2CC1E002187A5 /* FatCell.m */; };
+		7C87008217C2CCEE002187A5 /* TextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C87007E17C2CCED002187A5 /* TextFieldCell.m */; };
+		7C87008317C2CCEE002187A5 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C87007F17C2CCED002187A5 /* TextFieldCell.xib */; };
+		7C87008417C2CCEE002187A5 /* SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C87008117C2CCED002187A5 /* SwitchCell.m */; };
+		7C87008717C2CDAD002187A5 /* SlimCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C87008617C2CDAB002187A5 /* SlimCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,12 +50,27 @@
 		7C87005417C2CA41002187A5 /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
 		7C87005517C2CA41002187A5 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		7C87005817C2CA57002187A5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		7C87005A17C2CAD9002187A5 /* CustomGroupedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomGroupedCell.h; path = TableViewGoodies/CustomGroupedCell.h; sourceTree = "<group>"; };
-		7C87005B17C2CAD9002187A5 /* CustomGroupedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomGroupedCell.m; path = TableViewGoodies/CustomGroupedCell.m; sourceTree = "<group>"; };
-		7C87005C17C2CAD9002187A5 /* CustomGroupedCellBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomGroupedCellBackground.h; path = TableViewGoodies/CustomGroupedCellBackground.h; sourceTree = "<group>"; };
-		7C87005D17C2CAD9002187A5 /* CustomGroupedCellBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomGroupedCellBackground.m; path = TableViewGoodies/CustomGroupedCellBackground.m; sourceTree = "<group>"; };
-		7C87005E17C2CAD9002187A5 /* UITableView+CustomGroupedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+CustomGroupedCell.h"; path = "TableViewGoodies/UITableView+CustomGroupedCell.h"; sourceTree = "<group>"; };
-		7C87005F17C2CAD9002187A5 /* UITableView+CustomGroupedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+CustomGroupedCell.m"; path = "TableViewGoodies/UITableView+CustomGroupedCell.m"; sourceTree = "<group>"; };
+		7C87006417C2CB4F002187A5 /* CustomGroupedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGroupedCell.h; sourceTree = "<group>"; };
+		7C87006517C2CB4F002187A5 /* CustomGroupedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomGroupedCell.m; sourceTree = "<group>"; };
+		7C87006617C2CB4F002187A5 /* CustomGroupedCellBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGroupedCellBackground.h; sourceTree = "<group>"; };
+		7C87006717C2CB4F002187A5 /* CustomGroupedCellBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomGroupedCellBackground.m; sourceTree = "<group>"; };
+		7C87006817C2CB4F002187A5 /* UITableView+CustomGroupedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+CustomGroupedCell.h"; sourceTree = "<group>"; };
+		7C87006917C2CB4F002187A5 /* UITableView+CustomGroupedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+CustomGroupedCell.m"; sourceTree = "<group>"; };
+		7C87006E17C2CB82002187A5 /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
+		7C87006F17C2CB82002187A5 /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
+		7C87007017C2CB82002187A5 /* ArrayRowInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayRowInfo.h; sourceTree = "<group>"; };
+		7C87007117C2CB82002187A5 /* ArrayRowInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayRowInfo.m; sourceTree = "<group>"; };
+		7C87007217C2CB82002187A5 /* ArraySectionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArraySectionInfo.h; sourceTree = "<group>"; };
+		7C87007317C2CB82002187A5 /* ArraySectionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArraySectionInfo.m; sourceTree = "<group>"; };
+		7C87007717C2CC1D002187A5 /* FatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatCell.h; sourceTree = "<group>"; };
+		7C87007817C2CC1E002187A5 /* FatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FatCell.m; sourceTree = "<group>"; };
+		7C87007D17C2CCED002187A5 /* TextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldCell.h; sourceTree = "<group>"; };
+		7C87007E17C2CCED002187A5 /* TextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldCell.m; sourceTree = "<group>"; };
+		7C87007F17C2CCED002187A5 /* TextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
+		7C87008017C2CCED002187A5 /* SwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchCell.h; sourceTree = "<group>"; };
+		7C87008117C2CCED002187A5 /* SwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchCell.m; sourceTree = "<group>"; };
+		7C87008517C2CDAA002187A5 /* SlimCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlimCell.h; sourceTree = "<group>"; };
+		7C87008617C2CDAB002187A5 /* SlimCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlimCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +91,8 @@
 		7C87002017C2C991002187A5 = {
 			isa = PBXGroup;
 			children = (
-				7C87004917C2CA1F002187A5 /* Custom Grouped Table View */,
+				7C87006D17C2CB82002187A5 /* ArrayDataSource */,
+				7C87006317C2CB4F002187A5 /* CustomGroupedTableView */,
 				7C87003217C2C991002187A5 /* TableViewGoodies */,
 				7C87002B17C2C991002187A5 /* Frameworks */,
 				7C87002A17C2C991002187A5 /* Products */,
@@ -101,6 +125,15 @@
 				7C87003C17C2C991002187A5 /* AppDelegate.m */,
 				7C87005317C2CA41002187A5 /* DemoViewController.h */,
 				7C87005417C2CA41002187A5 /* DemoViewController.m */,
+				7C87008517C2CDAA002187A5 /* SlimCell.h */,
+				7C87008617C2CDAB002187A5 /* SlimCell.m */,
+				7C87007717C2CC1D002187A5 /* FatCell.h */,
+				7C87007817C2CC1E002187A5 /* FatCell.m */,
+				7C87007D17C2CCED002187A5 /* TextFieldCell.h */,
+				7C87007E17C2CCED002187A5 /* TextFieldCell.m */,
+				7C87007F17C2CCED002187A5 /* TextFieldCell.xib */,
+				7C87008017C2CCED002187A5 /* SwitchCell.h */,
+				7C87008117C2CCED002187A5 /* SwitchCell.m */,
 				7C87005517C2CA41002187A5 /* MainStoryboard.storyboard */,
 				7C87003317C2C991002187A5 /* Supporting Files */,
 			);
@@ -121,17 +154,32 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		7C87004917C2CA1F002187A5 /* Custom Grouped Table View */ = {
+		7C87006317C2CB4F002187A5 /* CustomGroupedTableView */ = {
 			isa = PBXGroup;
 			children = (
-				7C87005A17C2CAD9002187A5 /* CustomGroupedCell.h */,
-				7C87005B17C2CAD9002187A5 /* CustomGroupedCell.m */,
-				7C87005C17C2CAD9002187A5 /* CustomGroupedCellBackground.h */,
-				7C87005D17C2CAD9002187A5 /* CustomGroupedCellBackground.m */,
-				7C87005E17C2CAD9002187A5 /* UITableView+CustomGroupedCell.h */,
-				7C87005F17C2CAD9002187A5 /* UITableView+CustomGroupedCell.m */,
+				7C87006417C2CB4F002187A5 /* CustomGroupedCell.h */,
+				7C87006517C2CB4F002187A5 /* CustomGroupedCell.m */,
+				7C87006617C2CB4F002187A5 /* CustomGroupedCellBackground.h */,
+				7C87006717C2CB4F002187A5 /* CustomGroupedCellBackground.m */,
+				7C87006817C2CB4F002187A5 /* UITableView+CustomGroupedCell.h */,
+				7C87006917C2CB4F002187A5 /* UITableView+CustomGroupedCell.m */,
 			);
-			name = "Custom Grouped Table View";
+			name = CustomGroupedTableView;
+			path = TableViewGoodies/CustomGroupedTableView;
+			sourceTree = "<group>";
+		};
+		7C87006D17C2CB82002187A5 /* ArrayDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				7C87006E17C2CB82002187A5 /* ArrayDataSource.h */,
+				7C87006F17C2CB82002187A5 /* ArrayDataSource.m */,
+				7C87007017C2CB82002187A5 /* ArrayRowInfo.h */,
+				7C87007117C2CB82002187A5 /* ArrayRowInfo.m */,
+				7C87007217C2CB82002187A5 /* ArraySectionInfo.h */,
+				7C87007317C2CB82002187A5 /* ArraySectionInfo.m */,
+			);
+			name = ArrayDataSource;
+			path = TableViewGoodies/ArrayDataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +238,7 @@
 				7C87004117C2C991002187A5 /* Default@2x.png in Resources */,
 				7C87004317C2C991002187A5 /* Default-568h@2x.png in Resources */,
 				7C87005717C2CA41002187A5 /* MainStoryboard.storyboard in Resources */,
+				7C87008317C2CCEE002187A5 /* TextFieldCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,9 +252,16 @@
 				7C87003917C2C991002187A5 /* main.m in Sources */,
 				7C87003D17C2C991002187A5 /* AppDelegate.m in Sources */,
 				7C87005617C2CA41002187A5 /* DemoViewController.m in Sources */,
-				7C87006017C2CAD9002187A5 /* CustomGroupedCell.m in Sources */,
-				7C87006117C2CAD9002187A5 /* CustomGroupedCellBackground.m in Sources */,
-				7C87006217C2CAD9002187A5 /* UITableView+CustomGroupedCell.m in Sources */,
+				7C87006A17C2CB4F002187A5 /* CustomGroupedCell.m in Sources */,
+				7C87006B17C2CB4F002187A5 /* CustomGroupedCellBackground.m in Sources */,
+				7C87006C17C2CB4F002187A5 /* UITableView+CustomGroupedCell.m in Sources */,
+				7C87007417C2CB82002187A5 /* ArrayDataSource.m in Sources */,
+				7C87007517C2CB82002187A5 /* ArrayRowInfo.m in Sources */,
+				7C87007617C2CB82002187A5 /* ArraySectionInfo.m in Sources */,
+				7C87007917C2CC1E002187A5 /* FatCell.m in Sources */,
+				7C87008217C2CCEE002187A5 /* TextFieldCell.m in Sources */,
+				7C87008417C2CCEE002187A5 /* SwitchCell.m in Sources */,
+				7C87008717C2CDAD002187A5 /* SlimCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

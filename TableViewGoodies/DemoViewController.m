@@ -7,37 +7,90 @@
 //
 
 #import "DemoViewController.h"
+#import "ArrayDataSource.h"
+#import "TextFieldCell.h"
+#import "SwitchCell.h"
 
 
 @interface DemoViewController ()
-
+@property (nonatomic, strong) ArrayDataSource *dataSource;
 @end
 
 
 @implementation DemoViewController
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (void)viewDidLoad
 {
-    return 2;
+    [super viewDidLoad];    
+    [self makeSections];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (void)makeSections
 {
-    return 4;
+    self.dataSource = [ArrayDataSource new];
+    self.dataSource.textFont = [UIFont systemFontOfSize:16];
+    self.dataSource.textColor = [UIColor darkGrayColor];
+    self.dataSource.detailTextFont = [UIFont systemFontOfSize:12];
+    self.dataSource.detailTextColor = [UIColor lightGrayColor];
+    
+    ArraySectionInfo *sectionInfo = nil;
+    
+    
+    sectionInfo = [ArraySectionInfo sectionWithName:@"Basic"];
+    [sectionInfo addRow:[ArrayRowInfo rowWithClassName:@"SlimCell" configure:^(UITableViewCell *cell) {
+        cell.textLabel.text = @"Basic";
+        cell.detailTextLabel.text = nil;
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    } action:nil]];
+    [sectionInfo addRow:[ArrayRowInfo rowWithClassName:@"SlimCell" configure:^(UITableViewCell *cell) {
+        cell.textLabel.text = @"Basic";
+        cell.detailTextLabel.text = @"Detail";
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    } action:nil]];
+    [sectionInfo addRow:[ArrayRowInfo rowWithClassName:@"SlimCell" configure:^(UITableViewCell *cell) {
+        cell.textLabel.text = @"Disclosure Indicator";
+        cell.detailTextLabel.text = nil;
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    } action:^{
+        [self performSegueWithIdentifier:@"childSegue" sender:nil];
+    }]];
+    [sectionInfo addRow:[ArrayRowInfo rowWithClassName:@"SlimCell" configure:^(UITableViewCell *cell) {
+        cell.textLabel.text = @"Disclosure Indicator";
+        cell.detailTextLabel.text = @"Detail";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } action:^{
+        [self performSegueWithIdentifier:@"childSegue" sender:nil];
+    }]];
+    [self.dataSource addSection:sectionInfo];
+    
+    
+    sectionInfo = [ArraySectionInfo sectionWithName:@"Text Field"];
+    [sectionInfo addRow:[ArrayRowInfo rowWithClassName:@"TextFieldCell" configure:^(TextFieldCell *cell) {
+        cell.textField.font = self.dataSource.textFont;
+        cell.textField.placeholder = @"First Name";
+    } action:nil]];
+    [sectionInfo addRow:[ArrayRowInfo rowWithClassName:@"TextFieldCell" configure:^(TextFieldCell *cell) {
+        cell.textField.font = self.dataSource.textFont;
+        cell.textField.placeholder = @"Last Name";
+    } action:nil]];
+    [self.dataSource addSection:sectionInfo];
+    
+    
+    sectionInfo = [ArraySectionInfo sectionWithName:@"Switch"];
+    [sectionInfo addRow:[ArrayRowInfo rowWithClassName:@"SwitchCell" configure:^(SwitchCell *cell) {
+        __weak typeof(cell) weakCell = cell;
+        cell.switched = ^(BOOL isOn){
+            weakCell.textLabel.text = (isOn) ? @"Switch on" : @"Switch off";
+        };
+        cell.switched(NO);
+    } action:nil]];
+    [self.dataSource addSection:sectionInfo];
+        
+    
+    [self.dataSource registerReuseIdentifiersToTableView:self.tableView];
+    self.tableView.dataSource = self.dataSource;
+    self.tableView.delegate = self.dataSource;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return @"Prototype Cells";
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];    
-    return cell;
-}
 
 @end
