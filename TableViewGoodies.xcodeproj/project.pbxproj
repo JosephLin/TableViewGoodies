@@ -93,7 +93,7 @@
 			children = (
 				7C87006D17C2CB82002187A5 /* ArrayDataSource */,
 				7C87006317C2CB4F002187A5 /* CustomGroupedTableView */,
-				7C87003217C2C991002187A5 /* TableViewGoodies */,
+				7C87003217C2C991002187A5 /* Demo */,
 				7C87002B17C2C991002187A5 /* Frameworks */,
 				7C87002A17C2C991002187A5 /* Products */,
 			);
@@ -118,25 +118,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7C87003217C2C991002187A5 /* TableViewGoodies */ = {
+		7C87003217C2C991002187A5 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
 				7C87003B17C2C991002187A5 /* AppDelegate.h */,
 				7C87003C17C2C991002187A5 /* AppDelegate.m */,
 				7C87005317C2CA41002187A5 /* DemoViewController.h */,
 				7C87005417C2CA41002187A5 /* DemoViewController.m */,
-				7C87008517C2CDAA002187A5 /* SlimCell.h */,
-				7C87008617C2CDAB002187A5 /* SlimCell.m */,
-				7C87007717C2CC1D002187A5 /* FatCell.h */,
-				7C87007817C2CC1E002187A5 /* FatCell.m */,
-				7C87007D17C2CCED002187A5 /* TextFieldCell.h */,
-				7C87007E17C2CCED002187A5 /* TextFieldCell.m */,
-				7C87007F17C2CCED002187A5 /* TextFieldCell.xib */,
-				7C87008017C2CCED002187A5 /* SwitchCell.h */,
-				7C87008117C2CCED002187A5 /* SwitchCell.m */,
 				7C87005517C2CA41002187A5 /* MainStoryboard.storyboard */,
+				7C87008817C2CEFA002187A5 /* Cells */,
 				7C87003317C2C991002187A5 /* Supporting Files */,
 			);
+			name = Demo;
 			path = TableViewGoodies;
 			sourceTree = "<group>";
 		};
@@ -180,6 +173,22 @@
 			);
 			name = ArrayDataSource;
 			path = TableViewGoodies/ArrayDataSource;
+			sourceTree = "<group>";
+		};
+		7C87008817C2CEFA002187A5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7C87008517C2CDAA002187A5 /* SlimCell.h */,
+				7C87008617C2CDAB002187A5 /* SlimCell.m */,
+				7C87007717C2CC1D002187A5 /* FatCell.h */,
+				7C87007817C2CC1E002187A5 /* FatCell.m */,
+				7C87007D17C2CCED002187A5 /* TextFieldCell.h */,
+				7C87007E17C2CCED002187A5 /* TextFieldCell.m */,
+				7C87007F17C2CCED002187A5 /* TextFieldCell.xib */,
+				7C87008017C2CCED002187A5 /* SwitchCell.h */,
+				7C87008117C2CCED002187A5 /* SwitchCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
